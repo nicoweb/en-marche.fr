@@ -1,7 +1,8 @@
 import { ideaStatus } from '../../constants/api';
 import history from '../../history';
+
 import { redirectToSignin } from '../../helpers/navigation';
-import { SAVE_CURRENT_IDEA, FETCH_GUIDELINES, PUBLISH_IDEA } from '../constants/actionTypes';
+import { SAVE_CURRENT_IDEA, FETCH_GUIDELINES, PUBLISH_IDEA, AUTOCOMPLETE_TITLE_IDEA } from '../constants/actionTypes';
 import { publishIdea, voteIdea } from '../thunk/ideas';
 import { postComment, fetchThreads, deleteComment } from '../thunk/threads';
 import { createRequest, createRequestSuccess, createRequestFailure } from '../actions/loading';
@@ -112,6 +113,17 @@ export function saveAndPublishIdea(uuid, data, saveOnly = false) {
                 });
             }
         });
+}
+
+export function autoCompleteTitleIdea(title) {
+    return (dispatch, getState, axios) => {
+        axios
+            .get(`/api/ideas-workshop/ideas?name_contains=${title}`)
+            .then(res => res.data)
+            .then(data => dispatch(createRequest(AUTOCOMPLETE_TITLE_IDEA, { autoComplete: data })))
+            .then(data => dispatch(createRequestSuccess(AUTOCOMPLETE_TITLE_IDEA)))
+            .catch(() => dispatch(createRequestFailure(AUTOCOMPLETE_TITLE_IDEA)));
+    };
 }
 
 export function publishCurrentIdea(ideaData, saveOnly = false) {

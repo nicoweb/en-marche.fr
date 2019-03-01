@@ -17,6 +17,8 @@ class IdeaPageTitle extends React.Component {
     }
 
     onTitleChange(value) {
+        this.props.autoCompleteTitleIdea(value);
+
         if (this.state.isEditing) {
             this.setState({ value });
         } else {
@@ -31,6 +33,7 @@ class IdeaPageTitle extends React.Component {
                     <React.Fragment>
                         <TextArea
                             maxLength={120}
+                            minLength={this.props.minLength}
                             onChange={this.onTitleChange}
                             placeholder="Titre de votre proposition"
                             value={this.state.isEditing ? this.state.value : this.props.title}
@@ -40,6 +43,7 @@ class IdeaPageTitle extends React.Component {
                                     : undefined
                             }
                             name="title"
+                            haveAutoComplete
                         />
                         {this.state.isEditing && (
                             <div className="idea-page-title__title__editing-footer">

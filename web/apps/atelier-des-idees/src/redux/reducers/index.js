@@ -13,6 +13,7 @@ import threads from './threads';
 import pinned from './pinned';
 import reports from './reports';
 import staticData from './static';
+import autoComplete from './autoComplete';
 
 const rootReducer = combineReducers({
     // ui,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
     currentIdea,
     pinned,
     reports,
+    autoComplete,
     static: staticData,
 });
 

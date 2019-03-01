@@ -5,6 +5,7 @@ import {
     SET_GUIDELINES,
     TOGGLE_VOTE_CURRENT_IDEA,
     UPDATE_CURRENT_IDEA_ANSWER,
+    AUTOCOMPLETE_TITLE_IDEA,
 } from '../constants/actionTypes';
 import { toggleVote } from './ideas';
 
@@ -17,6 +18,9 @@ function ideaReducer(state = initialState.idea, action) {
     switch (type) {
     case SET_CURRENT_IDEA: {
         return { ...payload.data };
+    }
+    case AUTOCOMPLETE_TITLE_IDEA: {
+        return { ...state, autoComplete: { ...payload.data } };
     }
     case UPDATE_CURRENT_IDEA: {
         return { ...state, ...payload.data };
@@ -58,3 +62,5 @@ export const getCurrentIdea = state => state.idea;
 export const getCurrentIdeaAnswer = (state, answerId) =>
     state.idea.answers && state.idea.answers.find(answer => answer.id === answerId);
 export const getGuidelines = state => state.guidelines;
+
+export const getAutoComplete = state => state.autoComplete;

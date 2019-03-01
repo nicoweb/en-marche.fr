@@ -6,6 +6,7 @@ import { DELETE_IDEA_MODAL, PUBLISH_IDEA_MODAL } from '../../constants/modalType
 import { showModal } from '../../redux/actions/modal';
 import { initCreateIdeaPage } from '../../redux/thunk/navigation';
 import {
+    autoCompleteTitleIdea,
     saveCurrentIdea,
     publishCurrentIdea,
     deleteCurrentIdea,
@@ -47,6 +48,7 @@ function mapStateToProps(state) {
         // use current idea's status to update page when idea has been published
         status: currentIdea.status || 'DRAFT',
     };
+
     return {
         idea,
         guidelines,
@@ -54,6 +56,7 @@ function mapStateToProps(state) {
         isAuthenticated: true,
         isSaveSuccess: saveState.isSuccess,
         isSaving: saveState.isFetching,
+        autoComplete: state.autoComplete,
     };
 }
 
@@ -76,6 +79,7 @@ function mapDispatchToProps(dispatch) {
                 })
             ),
         onSaveIdea: data => dispatch(saveCurrentIdea(data)),
+        autoCompleteTitleIdea: data => dispatch(autoCompleteTitleIdea(data)),
     };
 }
 

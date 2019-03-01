@@ -1,6 +1,7 @@
 import { action } from '../helpers/actions';
 import {
     SET_CURRENT_IDEA,
+    AUTOCOMPLETE_TITLE_IDEA,
     UPDATE_CURRENT_IDEA,
     UPDATE_CURRENT_IDEA_ANSWER,
     SET_GUIDELINES,
@@ -8,6 +9,7 @@ import {
 } from '../constants/actionTypes';
 
 export const setCurrentIdea = (data = {}) => action(SET_CURRENT_IDEA, { data });
+export const autoCompleteTitleIdea = data => action(AUTOCOMPLETE_TITLE_IDEA, { data });
 export const updateCurrentIdea = data => action(UPDATE_CURRENT_IDEA, { data });
 export const updateCurrentIdeaAnswer = (answerId, data) => action(UPDATE_CURRENT_IDEA_ANSWER, { answerId, data });
 export const setGuidelines = data => action(SET_GUIDELINES, { data });

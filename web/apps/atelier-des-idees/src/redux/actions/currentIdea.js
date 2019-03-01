@@ -6,10 +6,11 @@ import {
     UPDATE_CURRENT_IDEA_ANSWER,
     SET_GUIDELINES,
     TOGGLE_VOTE_CURRENT_IDEA,
+    SET_AUTOCOMPLETE_RESULT,
 } from '../constants/actionTypes';
 
 export const setCurrentIdea = (data = {}) => action(SET_CURRENT_IDEA, { data });
-export const autoCompleteTitleIdea = data => action(AUTOCOMPLETE_TITLE_IDEA, { data });
+export const autoCompleteTitleIdea = data => action(SET_AUTOCOMPLETE_RESULT, { data });
 export const updateCurrentIdea = data => action(UPDATE_CURRENT_IDEA, { data });
 export const updateCurrentIdeaAnswer = (answerId, data) => action(UPDATE_CURRENT_IDEA_ANSWER, { answerId, data });
 export const setGuidelines = data => action(SET_GUIDELINES, { data });

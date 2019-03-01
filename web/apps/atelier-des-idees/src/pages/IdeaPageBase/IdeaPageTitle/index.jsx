@@ -44,6 +44,7 @@ class IdeaPageTitle extends React.Component {
                             }
                             name="title"
                             haveAutoComplete
+                            autoCompleteValues={this.props.autoCompleteValues}
                         />
                         {this.state.isEditing && (
                             <div className="idea-page-title__title__editing-footer">

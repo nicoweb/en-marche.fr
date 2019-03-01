@@ -10,6 +10,7 @@ import { selectIsAuthenticated, selectAuthUser } from '../selectors/auth';
 import { selectCurrentIdea, selectCurrentIdeaAnswer } from '../selectors/currentIdea';
 import { selectThread, selectAnswerThreadsPagingData } from '../selectors/threads';
 import {
+    autoCompleteTitleIdea,
     setCurrentIdea,
     updateCurrentIdea,
     setGuidelines,
@@ -115,13 +116,16 @@ export function saveAndPublishIdea(uuid, data, saveOnly = false) {
         });
 }
 
-export function autoCompleteTitleIdea(title) {
+export function setAutoCompleteTitleIdea(title) {
     return (dispatch, getState, axios) => {
-        axios
+        dispatch(createRequest(AUTOCOMPLETE_TITLE_IDEA));
+        return axios
             .get(`/api/ideas-workshop/ideas?name_contains=${title}`)
             .then(res => res.data)
-            .then(data => dispatch(createRequest(AUTOCOMPLETE_TITLE_IDEA, { autoComplete: data })))
-            .then(data => dispatch(createRequestSuccess(AUTOCOMPLETE_TITLE_IDEA)))
+            .then((data) => {
+                dispatch(autoCompleteTitleIdea(data));
+                dispatch(createRequestSuccess(AUTOCOMPLETE_TITLE_IDEA));
+            })
             .catch(() => dispatch(createRequestFailure(AUTOCOMPLETE_TITLE_IDEA)));
     };
 }

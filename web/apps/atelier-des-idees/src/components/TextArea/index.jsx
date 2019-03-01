@@ -36,7 +36,9 @@ function TextArea(props) {
                 </div>
                 {props.error && <p className="text-area__error">{props.error}</p>}
             </div>
-            {props.haveAutoComplete && props.minLength <= props.value.length && <Autocomplete />}
+            {props.haveAutoComplete && props.minLength <= props.value.length && (
+                <Autocomplete values={props.autoCompleteValues} />
+            )}
         </React.Fragment>
     );
 }

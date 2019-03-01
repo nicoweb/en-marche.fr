@@ -5,11 +5,11 @@ import {
     SET_GUIDELINES,
     TOGGLE_VOTE_CURRENT_IDEA,
     UPDATE_CURRENT_IDEA_ANSWER,
-    AUTOCOMPLETE_TITLE_IDEA,
+    SET_AUTOCOMPLETE_RESULT,
 } from '../constants/actionTypes';
 import { toggleVote } from './ideas';
 
-const initialState = { idea: {}, guidelines: [], threads: [] };
+const initialState = { idea: {}, guidelines: [], threads: [], autoComplete: [] };
 
 // TODO: refactor reducers to store current idea data in ideas reducer (normalizr style)
 
@@ -19,9 +19,8 @@ function ideaReducer(state = initialState.idea, action) {
     case SET_CURRENT_IDEA: {
         return { ...payload.data };
     }
-    case AUTOCOMPLETE_TITLE_IDEA: {
-        return { ...state, autoComplete: { ...payload.data } };
-    }
+    case SET_AUTOCOMPLETE_RESULT:
+        return { ...state, autoComplete: payload.data };
     case UPDATE_CURRENT_IDEA: {
         return { ...state, ...payload.data };
     }

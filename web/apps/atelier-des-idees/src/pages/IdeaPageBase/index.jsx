@@ -257,6 +257,7 @@ class IdeaPageBase extends React.Component {
                                     hasError={this.state.errors.name}
                                     showPublicationDate={idea.status !== ideaStatus.DRAFT}
                                     autoCompleteTitleIdea={value => this.autoCompleteTitleIdea(value)}
+                                    autoCompleteValues={idea.autoComplete}
                                 />
                                 <IdeaContent
                                     onQuestionTextChange={this.onQuestionTextChange}

@@ -45,6 +45,10 @@ class IdeaPageTitle extends React.Component {
                             name="title"
                             haveAutoComplete
                             autoCompleteValues={this.props.autoCompleteValues}
+                            id={'select0'}
+                            dataSelectlist="true"
+                            dataPrev={'firstItem'}
+                            dataNext={'select1'}
                         />
                         {this.state.isEditing && (
                             <div className="idea-page-title__title__editing-footer">

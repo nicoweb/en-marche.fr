@@ -1,7 +1,7 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 // shared
@@ -29,6 +29,7 @@
 @import '../src/components/TextEditor/style';
 @import '../src/components/Collapse/style';
 @import '../src/components/TextArea/style';
+@import '../src/components/AutoComplete/style';
 @import '../src/components/Input/style';
 @import '../src/components/Select/style';
 @import '../src/components/Switch/style';

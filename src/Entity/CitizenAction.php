@@ -111,6 +111,20 @@ class CitizenAction extends BaseEvent
 
     /**
      * @JMS\VirtualProperty
+     * @JMS\SerializedName("categoryName")
+     * @JMS\Groups({"public", "citizen_action_read"})
+     */
+    public function getCitizenActionCategoryName(): ?string
+    {
+        if (!$category = $this->getCategory()) {
+            return null;
+        }
+
+        return $category->getName();
+    }
+
+    /**
+     * @JMS\VirtualProperty
      * @JMS\SerializedName("citizenProjectUuid")
      * @JMS\Groups({"public", "citizen_action_read"})
      */

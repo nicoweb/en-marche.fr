@@ -17,7 +17,7 @@ import { selectGuidelines, selectCurrentIdea } from '../../redux/selectors/curre
 import { selectLoadingState } from '../../redux/selectors/loading';
 
 class CreateIdeaPage extends React.Component {
-    componentDidMount() {
+    componentDidMount(e) {
         window.scrollTo(0, 0);
         this.props.initCreateIdeaPage();
     }

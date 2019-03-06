@@ -18,10 +18,10 @@ function conjugation(nb) {
     }
     return 'votes';
 }
-function AutoComplete(props, e) {
+
+function AutoComplete(props) {
     const inputValue = props.value;
     document.onkeydown = keyPressed;
-
     const optionsLength = props.options && props.options.items.length;
 
     return (

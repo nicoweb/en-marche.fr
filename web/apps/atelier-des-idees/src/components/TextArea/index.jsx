@@ -6,7 +6,7 @@ import { keyPressed } from './../../helpers/navigation';
 class TextArea extends Component {
 	state = {
 		value: '',
-		autoCompleteIsOpen: true
+		autoCompleteIsOpen: false
 	};
 
 	componentDidMount() {
@@ -32,7 +32,11 @@ class TextArea extends Component {
 							name={this.props.name}
 							onChange={e => {
 								const { value } = e.target;
-								this.setState({ value: e.target.value });
+								this.setState({
+									value: e.target.value,
+									autoCompleteIsOpen: true
+								});
+
 								if (
 									!this.props.maxLength ||
 									(this.props.maxLength && value.length <= this.props.maxLength)
